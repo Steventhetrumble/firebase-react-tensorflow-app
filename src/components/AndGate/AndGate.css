@@ -1,0 +1,90 @@
+.AndGate-form {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30%;
+  margin-right:30%;
+  font-size: 16px;
+  width: 40%;
+}
+
+.AndGate-form h2 {
+  text-align: center;
+}
+
+.AndGate-input {
+  display: flex;
+  flex-direction: row;
+  align-content: space-around;
+  padding: 5px;
+}
+
+.AndGate-input label {
+  border: none;
+  padding: 8px 25px;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block;
+  font-size: inherit;
+  margin-right: 10px;
+  width: 20%;
+}
+
+.AndGate-input select, input {
+  justify-content: center;
+  flex-grow: 2;
+  padding: 8px 25px;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block;
+  font-size: inherit;
+  margin-right: 10px;
+  width: max-content;
+}
+
+.AndGate-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 5px;
+}
+
+.AndGate-buttons #trainButton {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 8px 25px;
+  text-align: center;
+  text-decoration: none;
+  font-size: inherit;
+  margin-right: 10px;
+  width: max-content;
+  cursor: pointer;
+}
+
+.AndGate-buttons #resetButton {
+  background-color: rgb(235, 74, 74);
+  border: none;
+  color: white;
+  padding: 8px 25px;
+  text-align: center;
+  text-decoration: none;
+  font-size: inherit;
+  margin-right: 10px;
+  width: max-content;
+  cursor: pointer;
+}
+
+.AndGate-buttons #trainButton:active {
+  background-color: rgb(46, 143, 49);
+  cursor: progress;
+}
+
+.AndGate-buttons #resetButton:active {
+  background-color: rgb(221, 38, 38);
+  cursor: progress;
+}
+
+.AndGate-buttons button:hover {
+  box-shadow: 1px 1px rgb(215, 216, 231);
+}
+
+
