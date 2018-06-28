@@ -29,6 +29,7 @@ class AltBody extends Component {
     const xs = tf.tensor2d([[1, 1, 1], [1, 0, 1], [0, 1, 1], [0, 0, 1]]);
     const ys = tf.tensor2d([[1], [0], [0], [0]]);
     const w = tf.variable(tf.randomNormal([3, 1], 0, 0.1, 'float32', 12))
+
     const f = x => tf.relu(tf.matMul(x, w))
     const loss = (output, y) => output.sub(y).square().mean();
 
@@ -45,7 +46,10 @@ class AltBody extends Component {
         return currentLoss;
       });
     }
-    console.log(w);
+    for(let [k,v] in w.print()){
+      console.log(k,v);
+    }
+   
     const userInput = tf.tensor2d([[firstInput, secondInput, 1]]);
     const pred = f(userInput).dataSync();
     this.setState({ predictedOutput: Number(pred).toFixed(6)});
