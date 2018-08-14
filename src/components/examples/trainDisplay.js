@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import * as tf from '@tensorflow/tfjs';
 
-import './App.css';
-import AndGate from './components/AndGate/AndGate';
-import LossChart from './components/LossChart/LossChart';
+import '../../App.css';
+import AndGate from './AndGate/AndGate';
+import LossChart from './LossChart/LossChart';
 
-class AltBody extends Component {
+class TrainDisplay extends Component {
   state = {
     firstInput: 1,
     secondInput: 1,
@@ -108,4 +108,4 @@ class AltBody extends Component {
 }
 
 
-export default AltBody;
+export default TrainDisplay;

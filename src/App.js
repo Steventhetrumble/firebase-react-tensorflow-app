@@ -5,8 +5,8 @@ import './App.css';
 import Navbar from './navbar';
 import FooterData from './footerData';
 import Body from './body';
-import AltBody from './altBody';
-import Game from './tictac';
+import Examples from './components/examples/examples';
+import Game from './components/game/tictac';
 import Footer from './footer';
 
 
@@ -25,7 +25,7 @@ class App extends Component {
           {/* this next section loads the middle of the page */}
            
             <Route path="/Home" component={Body}/>
-            <Route path="/AltBody" component={AltBody}/>
+            <Route path="/Examples" component={Examples}/>
             <Route path="/Game" component={Game}/>
 
           

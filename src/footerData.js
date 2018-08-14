@@ -3,24 +3,22 @@ import './App.css';
 import * as firebase from 'firebase';
 
 
+
 class FooterData extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.ref = firebase.firestore().collection("react").doc("speed");
     this.unsubscribe = null;
 
     this.state={
       speed1: 10,
-      speed2: 15
+      speed2: 15,
+      todos: [], 
     };
   };
 
-  // updateSpeed(value) {
-  //   this.setState({speed: value})
-  // }
 
-
-  componentDidMount() {
+  async componentDidMount() {
      this.ref.get().then((doc) => {
       if(doc.exists){
         let data = doc.data().speed;
@@ -33,6 +31,16 @@ class FooterData extends Component {
     });
 
     this.unsubscribe = this.ref.onSnapshot(this.oncollectionupdate)
+
+    try {
+      const res = await fetch('http://127.0.0.1:8000/api/');
+      const todos = await res.json();
+      this.setState({
+        todos
+      });
+    } catch (e) {
+      console.log(e);
+    }
     
   }
 
@@ -51,6 +59,8 @@ class FooterData extends Component {
         <div className="container has-text-centered">
           <div className="columns  is-multiline">
             <div className="column is-12 is-centered">
+              <h1 className="subtitle is-3">Table for styling example</h1>
+              <hr/>
               <table className="table is-fullwidth">
                 <thead>
                   <tr>
@@ -144,25 +154,34 @@ class FooterData extends Component {
               </table>
             </div>
             <div className="column is-12">
-            <table className="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-              <thead>
-                <tr><th>Table Heading</th></tr> 
+              <h1 className="subtitle is-3">Firebase imported Data</h1>
+              <hr/>
+              <table className="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                <thead>
+                  <tr><th>Speed</th></tr> 
 
-              </thead>
-              <tbody>
-                <tr><td>{this.state.speed1}</td></tr>
-                <tr><td>{this.state.speed2}</td></tr>
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {/* this spee will update when firebase is changed */}
+                  <tr><td>{this.state.speed1}</td></tr>
+                  {/* this speed will update when the page is reloaded */}
+                  <tr><td>{this.state.speed2}</td></tr>
+                </tbody>
+              </table>
             </div>
-          
+            <div className="column is-12 is-centered">
+              <h1 className="subtitle is-3">Api from django</h1>
+              <hr/>
+              {/* read the json file and map the objects */}
+            {this.state.todos.map(item => (
+              <div key={item.id}>
+                <h1>{item.title}</h1>
+                <span>{item.description}</span>
+              </div>
+            ))}
+            </div>
           </div>
         </div>
-
-
-      
-      
-                  
     </div>
        
     );

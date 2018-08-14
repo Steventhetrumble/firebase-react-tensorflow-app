@@ -105,14 +105,14 @@ function Square(props){
             <div className="container has-text-centered">
                 <div className="">
                     <div className="game columns is-vcentered">
-                        <div className="game-board column is-3 is-offset-2">
+                        <div className="game-board column is-3-desktop is-12-mobile is-offset-2">
                             <Board
                             squares= {current.squares}
                             onClick={(i) => this.handleClick(i)}
                             />
                         </div>
-                        <div className="game-info column is-4 is-offset-1" >
-                            <div ><h4 className="title is-2">{status}</h4></div>
+                        <div className="game-info column is-4-desktop is-4-mobile is-offset-1" >
+                            <h4 className="title is-2">{status}</h4>
                             <br></br>
                             <ul className="menu-list" >{moves}</ul>
                         </div>

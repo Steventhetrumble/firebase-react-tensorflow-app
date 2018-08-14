@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import logo from './images/tictac.png'
 
 
 const NavItem = props => {
     const pageURI = window.location.pathname+window.location.search;
-    const liClassName = (pageURI.match(props.path) != null) ? "is-active" : "";
+    const liClassName = (props.path === pageURI) ? "is-active" : "";
     return(
         <li className= {liClassName}>
             <a href= {props.path} className={props.aClass}>
@@ -15,7 +14,7 @@ const NavItem = props => {
 }
 
 
-class Navbar extends Component {
+class ExampleNavbar extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -46,24 +45,15 @@ class Navbar extends Component {
     return (
         <div className="Navbar">
             <div className="hero-head">
-                <nav className="navbar" aria-label="main navigation">
+                <nav className="navbar" >
                     <div className="container">
-                        <div className="navbar-brand">
-                            <a className="" href="../"><img src={logo} alt="Logo" width = "50" height="50" ></img></a>
-                            <a onClick={this.handleClick} role="button" className={"navbar-burger burger " + this.state.active.toString()} >
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </a>
-                        </div>
-                        <div id="navbarMenu" className={"navbar-menu " + this.state.active}>
+                        <div className={"navbar-menu " + this.state.active}>
                             <div className="navbar-end">
-                                <div className="tabs is-right">
+                                <div className="tabs is-centered">
                                     <ul>
-                                        <NavItem path="/Home" name="Home" aClass="" />
-                                        <NavItem path="/Examples" name="Examples" aClass="" />
-                                        <NavItem path="/Game" name="Game" aClass="" />
-                                        <NavItem path="#%" name="Team" aClass="" />                                    
+                                        <NavItem path="/Examples" name="Description" aClass=""/>
+                                        <NavItem path="/Examples/trainDisplay" name="TrainDisplay" aClass="" />
+                                        <NavItem path="/Examples/LoadKeras" name="LoadKeras" aClass="" />                          
                                     </ul>
                                 </div>
                             </div>
@@ -76,4 +66,4 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+export default ExampleNavbar;
